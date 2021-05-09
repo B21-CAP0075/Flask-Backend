@@ -1,0 +1,6 @@
+# model/model.h5
+*/.DS_STORE
+.DS_STORE
+.vscode
+__pycache__
+model/__pycache__

@@ -1,24 +1,27 @@
-from flask import Flask, request
-from flask_cors import CORS, cross_origin
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 from model import predict
-import json
 
 app = Flask(__name__)
 CORS(app, resources=r'/*')
+
+
 @app.route('/')
 def index():
-    return "Hi :*"
+    return 'Hello Baby!'
 
-@app.route('/predict', methods=['GET','POST'])
-def predict_images():
 
-    data = request.files.get("file")
-    if data == None:
-        return 'Got Nothing'
-    else:
-        prediction = predict.predict(data)
+@app.route('/api/predict', methods=['POST'])
+def get_prediction():
+    json = request.get_json()
+    print(json)
+    
+    if json is None:
+        return jsonify({'error': 'invalid input'})
 
-    return json.dumps(str(prediction))
+    prediction, confident = predict.predict(json)
+    return jsonify({'prediction': prediction, 'confident': confident})
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

@@ -22,8 +22,8 @@ def predict(data):
     classes = model.predict(scaler.transform([x]))
     
     if classes[0] < 0.5:
-        conf = round(float(1.0 - classes[0])*100, 2)
-        return f"Normal ({conf}%)"     
+        conf = round(float(1.0 - classes[0]) * 100, 2)
+        return "Normal", conf
     else:
-        conf = round(float(classes[0])*100, 2)
-        return f"Dementia ({conf}%)"
+        conf = round(float(classes[0]) * 100, 2)
+        return "Dementia", conf

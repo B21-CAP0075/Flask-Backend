@@ -11,7 +11,7 @@ def index():
     return 'Hello Baby!'
 
 
-@app.route('/api/predict', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def get_prediction():
     json = request.get_json()
     print(json)

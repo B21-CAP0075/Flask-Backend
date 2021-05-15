@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 
 
-model = tf.keras.models.load_model('model/best_model.h5')
+model = tf.keras.models.load_model('model/best_model_clean.h5')
 model.compile(
     optimizer='adam',
     loss='binary_crossentropy',
@@ -13,7 +13,7 @@ model.compile(
 
 def predict(data):
     patient = data['patient']
-    scaler_data = pd.read_csv('model/scaler.csv')
+    scaler_data = pd.read_csv('model/scaler_clean.csv')
 
     x = [patient['Age'], patient['EDUC'], patient['SES'], patient['MMSE'], patient['F'], patient['M']]
 

@@ -8,7 +8,7 @@ CORS(app, resources=r'/*')
 
 @app.route('/')
 def index():
-    return 'Hello Cloud V2!'
+    return 'Hello Cloud V3!'
 
 
 @app.route('/predict', methods=['POST'])

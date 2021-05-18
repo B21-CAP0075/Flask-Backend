@@ -15,7 +15,7 @@
    - '--image'
    - 'gcr.io/$PROJECT_ID/decare:$COMMIT_SHA'
    - '--region'
-   - 'REGION'
+   - 'us-central1'
    - '--platform'
    - 'managed'
  images:

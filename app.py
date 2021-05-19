@@ -101,6 +101,7 @@ def create_tables():
             "( vote_id SERIAL NOT NULL, time_cast timestamp NOT NULL, "
             "candidate CHAR(6) NOT NULL, PRIMARY KEY (vote_id) );"
         )
+        conn.close()
 
 @app.route('/')
 def index():
@@ -120,6 +121,17 @@ def get_prediction():
     prediction, confident = predict.predict(json)
     return jsonify({'prediction': prediction, 'confident': confident})
 
+@app.route('/article', methods=['GET'])
+def get_article():
+    articles = []
+    with db.connect() as conn:
+        article_list=conn.execute(
+            "SELECT * FROM article"
+        ).fetchall()
+        resp = jsonify(article_list)
+        resp.status_code=200
+        return resp
+        
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

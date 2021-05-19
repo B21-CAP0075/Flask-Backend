@@ -103,10 +103,17 @@ def create_tables():
     with db.connect() as conn:
         print('success')
 
+@app.route('/db')
+def con_succ():
+    global db
+    db = db or init_connection_engine()
+    # Create tables (if they don't already exist)
+    with db.connect() as conn:
+        print('success')
 @app.route('/')
 def index():
     app.logger.info('hello')
-    
+    print('hello')
     return 'Hello Cloud V3 with trigger!'
     
 

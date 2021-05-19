@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from model import predict
-import pymysql
 import sqlalchemy
 import logging
 import os
@@ -138,7 +137,7 @@ def create_tables():
     db = db or init_connection_engine()
     # Create tables (if they don't already exist)
     with db.connect() as conn:
-        print('success', file=sys.stderr)
+        print('success')
 
 @app.route('/')
 def index():

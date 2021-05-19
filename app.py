@@ -130,6 +130,7 @@ def get_article():
         ).fetchall()
         resp = jsonify(article_list)
         resp.status_code=200
+        conn.close()
         return resp
         
 

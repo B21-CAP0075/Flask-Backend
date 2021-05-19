@@ -130,8 +130,21 @@ def get_article():
             "SELECT id, title, date, link FROM article"
         ).fetchall()
         articles = [dict(r) for r in article_list]
-        return json.dumps(articles, default=str)
+        conn.close()
+        return json.dumps(articles, default=str), {'Content-Type': 'application/json'}
         
 
+@app.route('/yoga', methods=['GET'])
+def get_yoga():
+     
+    with db.connect() as conn:
+        yoga_list=conn.execute(
+            "SELECT id, nama_pose, deskripsi FROM yoga"
+        ).fetchall()
+        yogas = [dict(r) for r in yoga_list]
+        conn.close()
+
+        return json.dumps(yogas, default=str), {'Content-Type': 'application/json'}
+        
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

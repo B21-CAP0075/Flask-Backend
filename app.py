@@ -54,11 +54,7 @@ def init_connection_engine():
         # [END cloud_sql_mysql_sqlalchemy_lifetime]
 
     }
-
-    if os.environ.get("0.0.0.0"):
-        return init_tcp_connection_engine(db_config)
-    else:
-        return init_unix_connection_engine(db_config)
+    return init_unix_connection_engine(db_config)
 
 
 def init_unix_connection_engine(db_config):

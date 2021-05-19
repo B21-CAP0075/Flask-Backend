@@ -18,5 +18,7 @@
    - 'us-central1'
    - '--platform'
    - 'managed'
+   - '--add-cloudsql-instances'
+   - 'dementia-cares:asia-southeast2:dementia-care'
  images:
  - 'gcr.io/$PROJECT_ID/decare:$COMMIT_SHA'

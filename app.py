@@ -127,10 +127,10 @@ def get_article():
      
     with db.connect() as conn:
         article_list=conn.execute(
-            "SELECT * FROM article"
+            "SELECT id, title, date, link FROM article"
         ).fetchall()
         articles = [dict(r) for r in article_list]
-        return json.dumps(articles, indent=4, sort_keys=True, default=str)
+        return json.dumps(articles, default=str)
         
 
 if __name__ == "__main__":

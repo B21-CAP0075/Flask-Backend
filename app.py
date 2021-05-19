@@ -124,12 +124,13 @@ def get_prediction():
 
 @app.route('/article', methods=['GET'])
 def get_article():
-    articles = []
+     
     with db.connect() as conn:
         article_list=conn.execute(
             "SELECT * FROM article"
         ).fetchall()
-        return json.dumps([dict(r) for r in article_list])
+        articles = [dict(r) for r in article_list]
+        return json.dumps(articles, indent=4, sort_keys=True, default=str)
         
 
 if __name__ == "__main__":

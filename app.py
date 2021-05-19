@@ -5,6 +5,7 @@ import sqlalchemy
 import logging
 import os
 import sys
+import json
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -128,10 +129,7 @@ def get_article():
         article_list=conn.execute(
             "SELECT * FROM article"
         ).fetchall()
-        resp = jsonify(article_list)
-        resp.status_code=200
-        conn.close()
-        return resp
+        return json.dumps([dict(r) for r in article_list])
         
 
 if __name__ == "__main__":

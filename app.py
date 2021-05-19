@@ -89,16 +89,11 @@ def init_unix_connection_engine(db_config):
     return pool
 
 
-# This global variable is declared with a value of `None`, instead of calling
-# `init_connection_engine()` immediately, to simplify testing. In general, it
-# is safe to initialize your database connection pool when your script starts
-# -- there is no need to wait for the first request.
-db = None
 
 @app.before_first_request
 def create_tables():
     global db
-    db = db or init_connection_engine()
+    db = init_connection_engine()
     # Create tables (if they don't already exist)
     with db.connect() as conn:
         conn.execute(

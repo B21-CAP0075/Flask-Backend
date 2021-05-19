@@ -65,7 +65,7 @@ def init_unix_connection_engine(db_config):
     db_user = os.environ["root"]
     db_pass = os.environ["9890"]
     db_name = os.environ["DeCare"]
-    db_socket_dir = os.environ.get("/cloudsql")
+    db_socket_dir = os.environ.get("DB_SOCKET_DIR" ,"/cloudsql")
     cloud_sql_connection_name = os.environ["dementia-cares:asia-southeast2:dementia-care"]
     app.logger.info(cloud_sql_connection_name)
     pool = sqlalchemy.create_engine(
@@ -101,15 +101,12 @@ def create_tables():
     db = db or init_connection_engine()
     # Create tables (if they don't already exist)
     with db.connect() as conn:
-        print('success')
+        conn.execute(
+            "CREATE TABLE IF NOT EXISTS votes "
+            "( vote_id SERIAL NOT NULL, time_cast timestamp NOT NULL, "
+            "candidate CHAR(6) NOT NULL, PRIMARY KEY (vote_id) );"
+        )
 
-@app.route('/db')
-def con_succ():
-    global db
-    db = db or init_connection_engine()
-    # Create tables (if they don't already exist)
-    with db.connect() as conn:
-        print('success')
 @app.route('/')
 def index():
     app.logger.info('hello')

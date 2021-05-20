@@ -127,7 +127,7 @@ def get_article():
      
     with db.connect() as conn:
         article_list=conn.execute(
-            "SELECT id, title, date, link FROM article"
+            "SELECT id, title, date, link, banner FROM article"
         ).fetchall()
         articles = [dict(r) for r in article_list]
         conn.close()
@@ -139,7 +139,7 @@ def get_yoga():
      
     with db.connect() as conn:
         yoga_list=conn.execute(
-            "SELECT id, nama_pose, deskripsi FROM yoga"
+            "SELECT id, nama_pose, deskripsi, gambar FROM yoga"
         ).fetchall()
         yogas = [dict(r) for r in yoga_list]
         conn.close()

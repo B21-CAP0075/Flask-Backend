@@ -65,9 +65,9 @@ Replace PROJECT-ID with your GCP project ID. You can view your project ID by run
 ```bash
 gcloud config get-value project
 ```
-*a. You will be prompted for the service name: press Enter to accept the default name, Flask-Backend
-*b. You will be prompted for region: select the region of your choice, for example us-central1
-*c. You will be prompted to allow unauthenticated invocations: respond y
+* a. You will be prompted for the service name: press Enter to accept the default name, Flask-Backend
++ b. You will be prompted for region: select the region of your choice, for example us-central1
+- c. You will be prompted to allow unauthenticated invocations: respond y
 
 Then wait a few moments until the deployment is complete. On success, the command line displays the service URL.
 2. Visit your deployed container by opening the service URL in a web browser.

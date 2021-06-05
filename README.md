@@ -92,8 +92,3 @@ Then wait a few moments until the deployment is complete. On success, the comman
 3. Open Connections Tab
 4. Paste your Cloud SQL Connections link
 5. Save
-
-
-### This is backend this repository
-### Link deploy: https://decare-g2k7tjwhia-uc.a.run.app/
-### Predict API: https://decare-g2k7tjwhia-uc.a.run.app/predict
